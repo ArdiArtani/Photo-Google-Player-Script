@@ -1,2 +1,2 @@
-# Google-Plus-Player-Script
-Get Google Plus streaming links
+# Photo-Google-Player-Script
+Get Photo Google streaming links
