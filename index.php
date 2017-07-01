@@ -1,11 +1,6 @@
 <?php
-error_reporting(0);
 include "gp.php";
-
-if($_POST['submit'] != ""){
-	$url = $_POST['url'];
-	$getGP = getPhotoGoogle($link);
-}
+$getGP = getPhotoGoogle('https://photos.google.com/share/AF1QipP4SgmZ9Q2FWUKtE4rCwq1bwj-c_yBTPl7K5vZlQfTe5H9IlU4VGiCodMcJ6lDTlA/photo/AF1QipO_SW6Zov_mA-DORS6_eU4C3JdNlRFQTkQ6wlR8?key=Tm51bjVTNGN5c2RLQm1fcmpLWnIwbzRPVTZlTDhn');
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,15 +20,8 @@ if($_POST['submit'] != ""){
 	</style>
 
 	<div class="container">
-		<br />
-		<form action="" method="POST">
-			<input type="text" size="80" name="url" value="https://photos.google.com/share/AF1QipP4SgmZ9Q2FWUKtE4rCwq1bwj-c_yBTPl7K5vZlQfTe5H9IlU4VGiCodMcJ6lDTlA/photo/AF1QipO_SW6Zov_mA-DORS6_eU4C3JdNlRFQTkQ6wlR8?key=Tm51bjVTNGN5c2RLQm1fcmpLWnIwbzRPVTZlTDhn"/>
-			<input type="submit" value="GET" name="submit" />
-		</form>
-		<br/>
-
-		<div id="myElement">Paste the url and click the get button.</div>
-
+		<br/><br/>
+		<div id="myElement">Loading...</div>
 	</div>
 
 	<script src="https://content.jwplatform.com/libraries/DbXZPMBQ.js"></script>
