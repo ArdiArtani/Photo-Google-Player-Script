@@ -1,6 +1,6 @@
 # Photo-Google-Player-Script
 
-<a target="_blank" href="http://google.filedeo.com/gd">DEMO</a>
+<a target="_blank" href="http://google.filedeo.com/gp">DEMO</a>
 
 Grabs Photo Google streaming links (googleusercontent.com...)
 
