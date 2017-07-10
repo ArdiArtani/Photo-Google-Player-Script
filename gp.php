@@ -1,8 +1,6 @@
-
 <?php
 
-function curl($url)
-	{
+function curl($url) {
 	$ch = @curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	$head[] = "Connection: keep-alive";
@@ -17,51 +15,44 @@ function curl($url)
 	curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-		'Expect:'
-	));
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
 	$page = curl_exec($ch);
 	curl_close($ch);
 	return $page;
-	}
+}
 
-function getPhotoGoogle($link)
-	{
+function getPhotoGoogle($link){
 	$get = curl($link);
 	$data = explode('url\u003d', $get);
 	$url = explode('%3Dm', $data[1]);
 	$decode = urldecode($url[0]);
 	$count = count($data);
 	$linkDownload = array();
-	if ($count > 4)
-		{
-		$v1080p = $decode . '=m37';
-		$v720p = $decode . '=m22';
-		$v360p = $decode . '=m18';
+	if($count > 4) {
+		$v1080p = $decode.'=m37';
+		$v720p = $decode.'=m22';
+		$v360p = $decode.'=m18';
 		$linkDownload['1080p'] = $v1080p;
 		$linkDownload['720p'] = $v720p;
 		$linkDownload['360p'] = $v360p;
-		}
-
-	if ($count > 3)
-		{
-		$v720p = $decode . '=m22';
-		$v360p = $decode . '=m18';
+	}
+	if($count > 3) {
+		$v720p = $decode.'=m22';
+		$v360p = $decode.'=m18';
 		$linkDownload['720p'] = $v720p;
 		$linkDownload['360p'] = $v360p;
-		}
-
-	if ($count > 2)
-		{
-		$v360p = $decode . '=m18';
-		$linkDownload['360p'] = $v360p;
-		}
-
-	foreach($linkDownload as $l)
-		{
-		$data = explode('|', $l);
-		$files.= '{"type": "video/mp4", "label": "' . $data[1] . '", "file": "' . $data[0] . '"},';
-		}
-
-	return '[' . rtrim($files, ',') . ']';
 	}
+	if($count > 2) {
+		$v360p = $decode.'=m18';
+		$linkDownload['360p'] = $v360p;
+	}
+
+	foreach ($linkDownload as $key => $l){
+		$files .= '{"type": "video/mp4", "label": "'.$key.'", "file": "'.$l.'"},';
+	}
+	return '['.rtrim($files, ',').']';
+}
+
+
+
+?>
