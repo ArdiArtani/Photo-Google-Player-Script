@@ -6,7 +6,7 @@ $getGP = getPhotoGoogle('https://photos.google.com/share/AF1QipP4SgmZ9Q2FWUKtE4r
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-	<title>Get link Google Drive</title>
+	<title>Get link Google Photos</title>
 </head>
 <body>
 
