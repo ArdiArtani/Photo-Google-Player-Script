@@ -1,6 +1,7 @@
 <?php
 include "gp.php";
-$getGP = getPhotoGoogle('https://photos.google.com/share/AF1QipP4SgmZ9Q2FWUKtE4rCwq1bwj-c_yBTPl7K5vZlQfTe5H9IlU4VGiCodMcJ6lDTlA/photo/AF1QipO_SW6Zov_mA-DORS6_eU4C3JdNlRFQTkQ6wlR8?key=Tm51bjVTNGN5c2RLQm1fcmpLWnIwbzRPVTZlTDhn');
+$url = 'https://photos.google.com/share/AF1QipMTEPAiVF8t0YqLukflnOSQjwfd8ARIoT2h37AXvYO1uaWodbeiFoBUDuD_19tEbg/photo/AF1QipPA2Bq0JlAR9LoGD3mogsxSb9OZWEG4XqBDD4Rv?key=cjhUT0xrZjM5NGN2SVRLOVptZU5SMUlKV0lQYWpB';
+$getGP = getPhotoGoogle($url);
 ?>
 <!doctype html>
 <html lang="en">
