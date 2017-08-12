@@ -15,7 +15,7 @@
 1. Share that video
 2. Get the short link
 3. Paste to Web Browser
-4. Get the full link after load <i>https://photos.google.com/share/[ID]?key=[Key]</i>
+4. Get the full link after load <i>https://photos.google.com/share/[ID]/photo/[ID/?key=[Key]</i>
 
 ## Contributing
 1. Fork it!
