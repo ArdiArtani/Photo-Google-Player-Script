@@ -28,18 +28,6 @@ function getPhotoGoogle($link){
 	$decode = urldecode($url[0]);
 	$count = count($data);
 	$linkDownload = array();
-	if($count > 2) {
-		$v360p = $decode.'=m18';
-		$linkDownload['360p'] = $v360p;
-	}
-
-	if($count > 3) {
-		$v720p = $decode.'=m22';
-		$v360p = $decode.'=m18';
-		$linkDownload['720p'] = $v720p;
-		$linkDownload['360p'] = $v360p;
-	}
-
 	if($count > 4) {
 		$v1080p = $decode.'=m37';
 		$v720p = $decode.'=m22';
@@ -48,11 +36,26 @@ function getPhotoGoogle($link){
 		$linkDownload['720p'] = $v720p;
 		$linkDownload['360p'] = $v360p;
 	}
+	if($count > 3) {
+		$v720p = $decode.'=m22';
+		$v360p = $decode.'=m18';
+		$linkDownload['720p'] = $v720p;
+		$linkDownload['360p'] = $v360p;
+	}
+	if($count > 2) {
+		$v360p = $decode.'=m18';
+		$linkDownload['360p'] = $v360p;
+	}
 
 	foreach ($linkDownload as $key => $l){
 		$files .= '{"type": "video/mp4", "label": "'.$key.'", "file": "'.$l.'"},';
 	}
-	return '['.rtrim($files, ',').']';
+
+	if(@!$files) {
+		$files = '{"type": "video/mp4", "label": "HD", "file": "'.$decode .'=m18'.'"}';
+	}else{
+		return '['.rtrim($files, ',').']';
+	}
 }
 
 
