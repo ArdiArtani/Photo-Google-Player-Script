@@ -1,7 +1,7 @@
 
 # Photo-Google-Player-Script
 
-<a target="_blank" href="http://google.filedeo.com/gp">DEMO</a>
+<a target="_blank" href="http://demo.filedeo.stream/photos">DEMO</a>
 > Grabs Photo Google streaming links (googleusercontent.com...). You can use it for video players (jwplayer, videojs, flowplayer etc).
 
 ![](http://i.imgur.com/FlfyEaD.png)
