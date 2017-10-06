@@ -79,4 +79,20 @@ function fetch_value($str, $find_start = '', $find_end = ''){
 	return substr($substr, 0, $end);
 }
 
+function getURLbyID($id){
+	$url="https://goo.gl/photos/$id";
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Must be set to true so that PHP follows any "Location:" header
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$a = curl_exec($ch); // $a will contain all headers
+	$url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL); // This is what you need, it will return you the last effective URL
+	$photoid = fetch_value(file_get_contents($url), '[null,[["', '",');
+	$substr = '?key';
+	$fullurl = '/photo/'.$photoid;
+	$gpurl = str_replace($substr, $fullurl.$substr, $url);
+	return $gpurl;
+}
+
 ?>
