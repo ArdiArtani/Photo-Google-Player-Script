@@ -58,6 +58,25 @@ function getPhotoGoogle($link){
 	}
 }
 
+function fetch_value($str, $find_start = '', $find_end = ''){
+	if ($find_start == '') {
+			return '';
+	}
+	$start = strpos($str, $find_start);
+	if ($start === false) {
+			return '';
+	}
+	$length = strlen($find_start);
+	$substr = substr($str, $start + $length);
+	if ($find_end == '') {
+			return $substr;
+	}
+	$end = strpos($substr, $find_end);
+	if ($end === false) {
+			return $substr;
+	}
 
+	return substr($substr, 0, $end);
+}
 
 ?>
