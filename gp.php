@@ -19,7 +19,7 @@ function curl($url) {
 	curl_close($ch);
 	return $page;
 }
-function posterImg($url) {
+function posterImg($url, $size = "1280,720") { //poster size width,height
 $internalErrors = libxml_use_internal_errors(true);
 $ch = curl_init();
 $timeout = 25;
@@ -28,6 +28,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
 $html = curl_exec($ch);
 curl_close($ch);
+$sizes = explode(",",$size);
 $dom = new DOMDocument();
 @$dom->loadHTML($html);
 libxml_use_internal_errors($internalErrors);
@@ -39,7 +40,7 @@ foreach($dom->getElementsByTagName('img') as $element) {
     $maximgx++;
     }
 }
- $xim = str_replace("=w214-h120-k-no","=w1280-h720-no",$imgx);
+ $xim = str_replace("=w214-h120-k-no","=w".$sizes[0]."-h".$sizes[1]."-no",$imgx);
  $posterx = $xim;
 return $posterx;    
 }
