@@ -22,7 +22,7 @@ function curl($url) {
 function posterImg($url, $size = "1280,720") { //poster size width,height
 $internalErrors = libxml_use_internal_errors(true);
 $ch = curl_init();
-$timeout = 25;
+$timeout = 30;
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
@@ -35,14 +35,10 @@ libxml_use_internal_errors($internalErrors);
 $maximgx = 1;
 $imgx = "";
 foreach($dom->getElementsByTagName('img') as $element) {
-    if ($maximgx <= 1) {
-    $imgx = $element->getAttribute('src');
-    $maximgx++;
-    }
+($maximgx <= 1) ? $maximgx++ && $imgx = $element->getAttribute('src') : ''; 
 }
- $xim = str_replace("=w214-h120-k-no","=w".$sizes[0]."-h".$sizes[1]."-no",$imgx);
- $posterx = $xim;
-return $posterx;    
+$xim = str_replace("=w214-h120-k-no","=w".$sizes[0]."-h".$sizes[1]."-no",$imgx);
+return $xim;    
 }
 function getPhotoGoogle($link){
 	$get = curl($link);
