@@ -2,7 +2,7 @@
 # Photo-Google-Player-Script
 
 <a target="_blank" href="http://demo.filedeo.stream/photos">DEMO</a><br>
-<a target="_blank" href="http://mizi.ml/embedp.php?id=https://photos.google.com/share/AF1QipMTEPAiVF8t0YqLukflnOSQjwfd8ARIoT2h37AXvYO1uaWodbeiFoBUDuD_19tEbg/photo/AF1QipPA2Bq0JlAR9LoGD3mogsxSb9OZWEG4XqBDD4Rv?key=cjhUT0xrZjM5NGN2SVRLOVptZU5SMUlKV0lQYWpB">VideoJS Embed Demo</a>
+<a target="_blank" href="http://jauntiest-ages.000webhostapp.com/embedp.php?id=https://photos.google.com/share/AF1QipMTEPAiVF8t0YqLukflnOSQjwfd8ARIoT2h37AXvYO1uaWodbeiFoBUDuD_19tEbg/photo/AF1QipPA2Bq0JlAR9LoGD3mogsxSb9OZWEG4XqBDD4Rv?key=cjhUT0xrZjM5NGN2SVRLOVptZU5SMUlKV0lQYWpB">VideoJS Embed Demo</a>
 > Grabs Photo Google streaming links (googleusercontent.com...). You can use it for video players (jwplayer, videojs, flowplayer etc).
 
 ![](http://i.imgur.com/FlfyEaD.png)
