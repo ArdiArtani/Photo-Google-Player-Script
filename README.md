@@ -25,7 +25,7 @@
 5. Submit a pull request :D
 
 ## Donate
-<h5>Ripple (XRP): rNbRzhFaX2XQfRzY7CxkDqEHNFBAbCfJM</h5>
+<h5>Ripple (XRP): rNbRzhFaX2XQfRzY7CxkDqEHNFBAbCfJML</h5>
 <img src="https://i.imgur.com/WDxWbrU.png" width="120px" />
 
 <h5>Stripe </h5>
