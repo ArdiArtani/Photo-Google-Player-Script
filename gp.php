@@ -1,5 +1,4 @@
 <?php
-
 function curl($url) {
 	$ch = @curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
@@ -20,7 +19,27 @@ function curl($url) {
 	curl_close($ch);
 	return $page;
 }
-
+function posterImg($url, $size = "1280,720") { //poster size width,height
+$internalErrors = libxml_use_internal_errors(true);
+$ch = curl_init();
+$timeout = 30;
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+$html = curl_exec($ch);
+curl_close($ch);
+$sizes = explode(",",$size);
+$dom = new DOMDocument();
+@$dom->loadHTML($html);
+libxml_use_internal_errors($internalErrors);
+$maximgx = 1;
+$imgx = "";
+foreach($dom->getElementsByTagName('img') as $element) {
+($maximgx <= 1) ? $maximgx++ && $imgx = $element->getAttribute('src') : ''; 
+}
+$xim = str_replace("=w214-h120-k-no","=w".$sizes[0]."-h".$sizes[1]."-no",$imgx);
+return $xim;    
+}
 function getPhotoGoogle($link){
 	$get = curl($link);
 	$data = explode('url\u003d', $get);
@@ -28,22 +47,17 @@ function getPhotoGoogle($link){
 	$decode = urldecode($url[0]);
 	$count = count($data);
 	$linkDownload = array();
-	if($count > 4) {
-		$v1080p = $decode.'=m37';
-		$v720p = $decode.'=m22';
-		$v360p = $decode.'=m18';
+	$v1080p = $decode.'=m37';
+	$v720p = $decode.'=m22';
+	$v360p = $decode.'=m18';
+	if($count > 7) {
 		$linkDownload['1080p'] = $v1080p;
 		$linkDownload['720p'] = $v720p;
 		$linkDownload['360p'] = $v360p;
-	}
-	if($count > 3) {
-		$v720p = $decode.'=m22';
-		$v360p = $decode.'=m18';
+	} else if($count > 3) {
 		$linkDownload['720p'] = $v720p;
 		$linkDownload['360p'] = $v360p;
-	}
-	if($count > 2) {
-		$v360p = $decode.'=m18';
+	} else if($count > 2) {
 		$linkDownload['360p'] = $v360p;
 	}
 
