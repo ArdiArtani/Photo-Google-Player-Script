@@ -47,22 +47,17 @@ function getPhotoGoogle($link){
 	$decode = urldecode($url[0]);
 	$count = count($data);
 	$linkDownload = array();
-	if($count > 4) {
-		$v1080p = $decode.'=m37';
-		$v720p = $decode.'=m22';
-		$v360p = $decode.'=m18';
+	$v1080p = $decode.'=m37';
+	$v720p = $decode.'=m22';
+	$v360p = $decode.'=m18';
+	if($count > 7) {
 		$linkDownload['1080p'] = $v1080p;
 		$linkDownload['720p'] = $v720p;
 		$linkDownload['360p'] = $v360p;
-	}
-	if($count > 3) {
-		$v720p = $decode.'=m22';
-		$v360p = $decode.'=m18';
+	} else if($count > 3) {
 		$linkDownload['720p'] = $v720p;
 		$linkDownload['360p'] = $v360p;
-	}
-	if($count > 2) {
-		$v360p = $decode.'=m18';
+	} else if($count > 2) {
 		$linkDownload['360p'] = $v360p;
 	}
 
