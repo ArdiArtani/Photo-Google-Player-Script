@@ -42,9 +42,14 @@ return $xim;
 }
 function getPhotoGoogle($link){
 	$get = curl($link);
+	$files = "";
 	$data = explode('url\u003d', $get);
-	$url = explode('%3Dm', $data[1]);
-	$decode = urldecode($url[0]);
+	if (isset($data[1])) {
+      $url = explode('%3Dm', $data[1]);  
+        $decode = urldecode($url[0]);
+    } else {
+        $decode = "";
+    }
 	$count = count($data);
 	$linkDownload = array();
 	$v1080p = $decode.'=m37';
@@ -59,7 +64,9 @@ function getPhotoGoogle($link){
 		$linkDownload['360p'] = $v360p;
 	} else if($count > 2) {
 		$linkDownload['360p'] = $v360p;
-	}
+	} else if($count >= 0) {
+       $linkDownload['direct'] = dwnload($link); 
+    }
 
 	foreach ($linkDownload as $key => $l){
 		$files .= '{"type": "video/mp4", "label": "'.$key.'", "file": "'.$l.'"},';
@@ -71,7 +78,25 @@ function getPhotoGoogle($link){
 		return '['.rtrim($files, ',').']';
 	}
 }
-
+//download video directly or stream in player without range request headers.
+function dwnload($url) {
+$scriptx = "";
+$internalErrors = libxml_use_internal_errors(true);
+$dom = new DOMDocument();
+@$dom->loadHTML(curl($url));
+foreach($dom->getElementsByTagName('script') as $k => $js) {
+       $scriptx .= $js->nodeValue;
+}
+preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $scriptx, $match);
+$vlink = "";
+foreach ($match[0] as $c) {
+   if (strpos($c, 'video-downloads') !== false) {
+      $vlink = $c;   
+    }
+}
+     
+return $vlink; //video-downloads.googleusercontent.com - no range headers	
+}
 function fetch_value($str, $find_start = '', $find_end = ''){
 	if ($find_start == '') {
 			return '';
